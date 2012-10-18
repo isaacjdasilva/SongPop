@@ -2,13 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+<<<<<<< HEAD
 	<groupId>WaldirIsaac</groupId>
+=======
+	<groupId>Waldir/Isaac</groupId>
+>>>>>>> 09c64331cd7eb725ae1d064ce4ab38d604400183
 	<artifactId>SongPop</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
-	<name>Name</name>
+	<name>SongPop</name>
 	<url>http://www.lalla.com.br</url>
-	<description>Description</description>
+	<description>Projeto Para Pós-graduação da Universidade Presbiteriana Mackenzie.SongPop é um jogo multiplayer onde jogadores se desafiam com objetivo de acertar as músicas que são categorizadas. Vence quem acertar mais músicas e em menos tempo.</description>
 	<properties>
 		<java.version>1.6</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
