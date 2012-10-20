@@ -1,0 +1,13 @@
+<Configure id="wac" class="org.eclipse.jetty.webapp.WebAppContext">
+ <New id="datasource" class="org.eclipse.jetty.plus.jndi.Resource">
+        <Arg>jdbc/DefaultDS</Arg>
+        <Arg>
+                <New class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                        <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
+                        <Set name="url">jdbc:mysql://localhost:3306/mackenzie</Set>
+                        <Set name="username">root</Set>
+                        <Set name="password">administrador</Set>
+                </New>
+        </Arg>
+</New> 
+</Configure>
