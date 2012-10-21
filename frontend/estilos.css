@@ -16,9 +16,10 @@
 	border-radius: 11px;		/*Arredondamento da borda*/
 	border-color:orange;
 	
-	/*Tipo de fonte e tamanho para todos elementos da tela*/
+	/*Tipo de fonte, tamanho e centralização para todos elementos da tela*/
 	font-family:Arial Black;	
 	font-size:large;
+	text-align:center;
 }
 
 #jogadores {
@@ -38,6 +39,7 @@
 	-moz-opacity: 0.90;
 	filter: alpha(opacity=90);
 	
+	/*Sombreamento*/
 	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
@@ -56,7 +58,7 @@
 	  margin-bottom: 1%;
 	  
 }
-#imagem{
+#imagem{ /*Controla a posição da imagem (disco) na tela vs*/
 	margin-left: 2%;
 	margin-right: 1%;
 	margin-top: 2%;
@@ -75,18 +77,17 @@
 	border-color:white;
 	border-radius: 11px;
 	
-	text-align:center;
-	
 	opacity:0.90;
 	-moz-opacity: 0.90;
 	filter: alpha(opacity=90);
 	
+	/*Sombreamento*/
 	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-#menu{ /*Este style é para a div menu é uma div invisivel*/
+#menu{ /*Este style é para a div menu que é uma div invisivel que acomoda as opcaos*/
 	height: 30%;
 	width: 90%;
 	
@@ -95,54 +96,26 @@
 	margin-right:5%;
 }
 
-#opcaoEsquerda{
-	background:  -moz-linear-gradient(68% 87% 90deg,#FFCC00, #FFFFFF, #FFCC00 96%);
-	height: 40%;
-	width: 40%;
-	float: left;
-	margin-left:7%;
-	margin-top:2%;
-	border-radius: 11px;
-	text-align:center;
-
-	font-family:Arial Black;
-	font-size:large;
-	
-	border: 1px solid;
-	border-color:white;
-	
-	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
-	-moz-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
-	
-	opacity:0.90;
-	-moz-opacity: 0.90;
-	filter: alpha(opacity=90);
-}
-
-#opcaoDireita{
+#opcao{
 	background: -moz-linear-gradient(68% 87% 90deg,#FFCC00, #FFFFFF, #FFCC00 96%);
 	height: 40%;
 	width: 40%;
-	float: right;
-	margin-right:7%;
-	margin-top:2%;
-	border-radius: 11px;
-	text-align:center;
 	
-	font-family:Arial Black;
-	font-size:large;
+	margin-top:2%;
 	
 	border: 1px solid;
 	border-color:white;
+	border-radius: 11px;
+	
+	opacity:0.90;
+	-moz-opacity: 0.90;
+	filter: alpha(opacity=90);
 	
 	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	
-	opacity:0.90;
-	-moz-opacity: 0.90;
-	filter: alpha(opacity=90);
+	/*Os parametros: float, margin-right/left são controlados no html*/
 }
 
 
