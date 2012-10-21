@@ -2,7 +2,7 @@
 
 #telaDeBatalha {
 	background: -moz-linear-gradient(
-		0% 100% 90deg,#EDEDED, #30B0C9, #87C5C7 100%,#239199 0%); /*Efeito degrade azul na tela*/
+		0% 100% 90deg,#EDEDED, #30B0C9, #87C5C7 100%,#239199 0%); /*Efeito degrade azul na tela*/	
 	height:640px; 				/*Altura da tela*/ 
 	width:760px; 				/*Largura da tela*/ 
 	 
