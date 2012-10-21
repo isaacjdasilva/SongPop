@@ -33,6 +33,7 @@
 	border-color:white;
 	border-radius: 11px;
 	
+	/*Os 3 proximos parametros controla a opacidade do elemento*/
 	opacity:0.90;
 	-moz-opacity: 0.90;
 	filter: alpha(opacity=90);
@@ -42,7 +43,9 @@
 	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	
 	/*Aumenta tamanho da fonte só neste objeto*/
-	font-size:20px; 
+	font-size:20px;
+
+	/*Os parametros: float, margin-right/left e text-align são controlados no html*/
 }
 
 #linha{
@@ -72,10 +75,6 @@
 	border-color:white;
 	border-radius: 11px;
 	
-	float:left;
-	
-	font-family:Arial Black;
-	font-size:large;
 	text-align:center;
 	
 	opacity:0.90;
@@ -87,20 +86,13 @@
 	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-#menu{
-	
+#menu{ /*Este style é para a div menu é uma div invisivel*/
 	height: 30%;
 	width: 90%;
 	
 	margin-top:5%;
 	margin-left:5%;
 	margin-right:5%;
-	
-	float:left;
-	
-	opacity:0.90;
-	-moz-opacity: 0.90;
-	filter: alpha(opacity=90);
 }
 
 #opcaoEsquerda{
