@@ -141,6 +141,14 @@
 	margin-right:5%;
 }
 
+.oSelecionada{
+	border-color:white;
+}
+
+.oDesselecionada{
+	border-color:red;
+}
+
 
 
 
