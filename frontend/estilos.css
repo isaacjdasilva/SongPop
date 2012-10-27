@@ -1,6 +1,6 @@
 @CHARSET "ISO-8859-1";
 
-#telaDeBatalha { 	
+.telaDeBatalha { 	
 	background: -webkit-radial-gradient(#EDEDED, #6495ED); /*Efeito degrade circular azul na tela (para o chrome)*/
 	background: -moz-radial-gradient(#EDEDED, #6495ED); /*Efeito degrade circular azul na tela (para o firefox)*/
 	height:640px; 				/*Altura da tela*/ 
@@ -22,7 +22,7 @@
 	text-align:center;
 }
 
-#jogadores {
+.jogador{
 	background: -moz-linear-gradient(100% 100% 90deg,#AFFF8B, #FFFFFF, #AFFF8B 100%); /*Efeito degrade na tela (para o chrome)*/
 	background: -webkit-gradient(linear, 0% 21%, 0% 81%, from(#AFFF8B), to(#AFFF8B), color-stop(.4,#FFFFFF)); /*Efeito degrade na tela (para o firefox)*/
 	height: 20%;
@@ -51,7 +51,19 @@
 	/*Os parametros: float, margin-right/left e text-align são controlados no html*/
 }
 
-#linha{
+.jEsquerda{
+	float:left; 
+	margin-left:5%; 
+	text-align:right;
+}
+
+.jDireita{
+	float:right; 
+	margin-right:5%; 
+	text-align:left;
+}
+
+.linha{
 	  color: #f00;
       background-color: #f00;
       height:3px;
@@ -59,14 +71,14 @@
 	  margin-bottom: 1%;
 	  
 }
-#imagem{ /*Controla a posição da imagem (disco) na tela vs*/
+.imagem{ /*Controla a posição da imagem (disco) na tela vs*/
 	margin-left: 1%;
 	margin-right: 1%;
 	margin-top: 2%;
 	margin-bottom:4%;
 }
 
-#musica{
+.musica{
 	background:  -moz-linear-gradient(68% 87% 90deg,#FFCC00, #FFFFFF, #FFCC00 96%);
 	background:  -webkit-gradient(linear, 0% 20%, 0% 80%, from(#FFCC00), to(#FFCC00), color-stop(.4,#FFFFFF));
 	height: 20%;
@@ -89,7 +101,7 @@
 	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-#menu{ /*Este style é para a div menu que é uma div invisivel que acomoda as opcaos*/
+.menu{ /*Este style é para a div menu que é uma div invisivel que acomoda as opcaos*/
 	height: 30%;
 	width: 90%;
 	
@@ -98,7 +110,7 @@
 	margin-right:5%;
 }
 
-#opcao{
+.opcao{
 	background: -moz-linear-gradient(68% 87% 90deg,#FFCC00, #FFFFFF, #FFCC00 96%);
 	background: -webkit-gradient(linear, 0% 20%, 0% 80%, from(#FFCC00), to(#FFCC00), color-stop(.4,#FFFFFF));
 	height: 40%;
@@ -117,6 +129,16 @@
 	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.oEsquerda{
+	float:left; 
+	margin-left:5%;
+}
+
+.oDireita{
+	float:right; 
+	margin-right:5%;
 }
 
 
