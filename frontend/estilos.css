@@ -71,11 +71,19 @@
 	  margin-bottom: 1%;
 	  
 }
-.imagem{ /*Controla a posição da imagem (disco) na tela vs*/
+.imagemDisco{ /*Controla a posição da imagem (disco) na tela vs*/
 	margin-left: 1%;
 	margin-right: 1%;
 	margin-top: 2%;
-	margin-bottom:4%;
+	margin-bottom:1%;
+}
+
+.estrelaQtdMusica{
+
+}
+
+.imagemEstrela{
+
 }
 
 .musica{
@@ -105,7 +113,7 @@
 	height: 30%;
 	width: 90%;
 	
-	margin-top:5%;
+	margin-top:3%;
 	margin-left:5%;
 	margin-right:5%;
 }
