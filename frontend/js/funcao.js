@@ -1,5 +1,7 @@
 /*! Funções da tela de batalha */
+$(document).Ajax(function() {
 
+}
 $(document).ready(function() {
 	$("#opcao1")
 		.mouseover(function() { 
