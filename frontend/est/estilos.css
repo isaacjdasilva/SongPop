@@ -21,6 +21,29 @@
 	font-size:large;
 	text-align:center;
 }
+.login{
+	background: -webkit-radial-gradient(#EDEDED, #6495ED); /*Efeito degrade circular azul na tela (para o chrome)*/
+	background: -moz-radial-gradient(#EDEDED, #6495ED); /*Efeito degrade circular azul na tela (para o firefox)*/
+	height:200px; 				/*Altura da tela*/ 
+	width:500px; 				/*Largura da tela*/ 
+	 
+	/*Os proximos 5 parametros são para deixar a tela no meio*/
+	margin:-170px 0 0 -280px;	/*O primeiro valor sobe/desce a tela e o segundo posiciona na direita/esquerda*/ 
+	position:absolute; 
+	top:50%; 
+	left:50%; 
+	 
+	border: 1px solid; 			/*Espessura da borda*/
+	border-radius: 11px;		/*Arredondamento da borda*/
+	border-color:orange;
+}
+
+.loginComponentes{
+	margin-left:30px;
+	margin-right:10px;
+	margin-top:50px;
+	margin-bottom:10px;
+}
 
 .jogador{
 	background: -moz-linear-gradient(100% 100% 90deg,#AFFF8B, #FFFFFF, #AFFF8B 100%); /*Efeito degrade na tela (para o chrome)*/
@@ -185,12 +208,6 @@
 	/*background:  -webkit-gradient(linear, 0% 20%, 0% 80%, from(#FFCC00), to(#FFCC00), color-stop(.4,#FFFFFF));*/
 }
 
-.botao{
-	margin-top:30%;
-	margin-left:2%;
-	margin-right:2%;
-}
-
 input {
 	padding:0.15em;
 	border:1px solid black;
@@ -243,6 +260,12 @@ tbody tr:nth-child(odd){
 
 tbody tr:hover, tbody tr:focus {
 	background-color: #CCCCCC;
+}
+
+.botao{
+	margin-top:30%;
+	margin-left:2%;
+	margin-right:2%;
 }
 
 .btnAlterar{
