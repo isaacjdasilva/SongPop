@@ -288,7 +288,15 @@ tbody tr:hover, tbody tr:focus {
 	font-weight:bold;
 }
 
+.corVitoria{
+	color:green;
+	font-weight:bold;
+}
 
+.corDerrota{
+	color:red;
+	font-weight:bold;
+}
 
 
 
