@@ -228,7 +228,41 @@ label{
 }
 
 table, th, td{
-	border: 1px solid black;
+	border: 0px solid brown;
+	font-family:Sans-serif;
+	font-size:15px;
+}
+
+thead{
+	background-color: #FFA500;
+}
+
+tbody tr:nth-child(odd){
+	background-color: #FFCC00;
+}
+
+tbody tr:hover, tbody tr:focus {
+	background-color: #CCCCCC;
+}
+
+.btnAlterar{
+	padding:0.15em;
+	border:1px solid black;
+	border-radius:5px;
+	background:#EDEDED;
+	margin-top:5%;
+	margin-left:15%;
+	width:150px;
+}
+
+.btnAlterar:hover, .btnAlterar:focus { 
+	
+	border:1px solid red;
+	border-radius: 5px;
+	background:#f6f6f6;
+	margin-top:5%;
+	margin-left:15%;
+	font-weight:bold;
 }
 
 
