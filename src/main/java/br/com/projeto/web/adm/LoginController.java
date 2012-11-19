@@ -11,8 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.mackenzie.pos.songpop.util.Constants;
 import br.com.projeto.service.UserService;
-import br.com.projeto.util.Constants;
 
 
 

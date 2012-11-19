@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "USUARIO")
 public class User {
-
+ 
 	@Id
 	@Column(name = "ID")
 	private Long id;

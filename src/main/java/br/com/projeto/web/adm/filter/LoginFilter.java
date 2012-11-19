@@ -14,12 +14,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 
-import br.com.projeto.util.Constants;
-
+import br.com.mackenzie.pos.songpop.util.Constants;
+ 
 
 
 public class LoginFilter implements Filter {
-	
+	 
 	private static String LOGIN_URI = "/adm/login.jsp";
 	private static String LOGGED_IN_URI = "/adm";
 	private static String[] AUTHORIZED_URIS = new String[] {
@@ -35,7 +35,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(true);
-		
+		 
 		if(session.getAttribute(Constants.USER_ADMIN) == null) {
 			
 			boolean authorized = false;

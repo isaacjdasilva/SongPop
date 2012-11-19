@@ -14,8 +14,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
-import br.com.projeto.util.ApplicationProperties;
-
+import br.com.mackenzie.pos.songpop.util.ApplicationProperties;
+ 
 @Service
 public class SendMailService {
 	

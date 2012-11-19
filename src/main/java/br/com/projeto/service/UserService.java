@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import br.com.mackenzie.pos.songpop.util.Constants;
+import br.com.mackenzie.pos.songpop.util.CryptUtils;
 import br.com.projeto.dao.UserDao;
 import br.com.projeto.entity.User;
-import br.com.projeto.util.Constants;
-import br.com.projeto.util.CryptUtils;
 
 /**
  * @author Andre Santos
@@ -27,7 +27,7 @@ public class UserService {
 
 		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 		HttpSession session = attr.getRequest().getSession(true);
-		
+		 
 		User user = dao.get(login, CryptUtils.md5(password));
 		
 		if (user == null) {

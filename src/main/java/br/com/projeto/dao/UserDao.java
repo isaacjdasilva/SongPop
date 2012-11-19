@@ -1,11 +1,12 @@
 package br.com.projeto.dao;
-
+ 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.mackenzie.pos.songpop.util.Util;
 import br.com.projeto.entity.User;
 
 @Repository
@@ -22,7 +23,14 @@ public class UserDao  {
 		Query query = em.createQuery("from User u where u.login = :login and u.password = :password ");
 		query.setParameter("login", login);
 		query.setParameter("password", password);
-		return (User)query.getSingleResult();
+//		return (User)query.getSingleResult();
+		 
+		if (!Util.isNullOrVazio(query.getResultList())) {
+			return (User)query.getResultList().get(0);
+		}
+		
+		return null;
+		
 	}
 
 }
