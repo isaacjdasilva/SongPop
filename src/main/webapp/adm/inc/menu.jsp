@@ -1,4 +1,4 @@
-<%@ include file="/jsp/inc/init.jsp" %>
+<%@ include file="/inc/init.jsp" %>
 <c:set var="navArr" value="${fn:split(nav, '#')}"/>
 
 <ol>

@@ -6,7 +6,7 @@
                         <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
                         <Set name="url">jdbc:mysql://localhost:3306/mackenzie</Set>
                         <Set name="username">root</Set>
-                        <Set name="password">root123</Set>
+                        <Set name="password">administrador</Set>
                 </New>
         </Arg>
 </New> 

@@ -54,6 +54,6 @@
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
 	</mvc:interceptors>
     
-   <import resource="data-access-config.xml" />
+	<import resource="data-access-config.xml" />
 
 </beans>
