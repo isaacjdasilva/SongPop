@@ -1,0 +1,14 @@
+/* Reset */
+* {margin: 0; padding: 0}
+table {border-collapse: collapse; border-spacing: 0}
+table,fieldset,img,abbr,acronym {border: 0}
+address,caption,cite,code,dfn,em,strong,th,var {border: 0; font-weight: normal; font-style: normal; font-size: 100%; line-height: 1; font-style: normal; font-weight: normal; text-align: left}
+a {outline: none}
+em {font-style: italic}
+strong {font-weight: bold}
+ol,ul {list-style: none}
+del,ins {text-decoration: none}
+caption,th {text-align: left}
+h1,h2,h3,h4,h5,h6 {font-size: 100%; font-weight: normal}
+q:before,q:after {content: ""}
+hr {display: none}
