@@ -1,0 +1,519 @@
+CREATE DATABASE  IF NOT EXISTS `mackenzie` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `mackenzie`;
+-- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
+--
+-- Host: localhost    Database: mackenzie
+-- ------------------------------------------------------
+-- Server version	5.1.30-community
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `tb_artista`
+--
+
+DROP TABLE IF EXISTS `tb_artista`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_artista` (
+  `id_artista` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `nome` varchar(40) NOT NULL,
+  PRIMARY KEY (`id_artista`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_categoria`
+--
+
+DROP TABLE IF EXISTS `tb_categoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_categoria` (
+  `id_categoria` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `nome` varchar(30) NOT NULL,
+  `pais` int(11) DEFAULT NULL,
+  `quantidade_moeda` int(11) NOT NULL,
+  PRIMARY KEY (`id_categoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_desafio`
+--
+
+DROP TABLE IF EXISTS `tb_desafio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_desafio` (
+  `id_desafio` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `dt_fim` datetime NOT NULL,
+  `dt_inicio` datetime NOT NULL,
+  `status_desafio` int(11) NOT NULL,
+  `id_categoria` bigint(20) NOT NULL,
+  `id_desafiado` bigint(20) NOT NULL,
+  `id_desafiante` bigint(20) NOT NULL,
+  `id_vencedor` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_desafio`),
+  KEY `FK5CD4364C16E419ED` (`id_categoria`),
+  KEY `FK5CD4364C131CA229` (`id_desafiado`),
+  KEY `FK5CD4364CCB30087D` (`id_vencedor`),
+  KEY `FK5CD4364C306D9407` (`id_desafiante`),
+  CONSTRAINT `FK5CD4364C306D9407` FOREIGN KEY (`id_desafiante`) REFERENCES `tb_jogador` (`id_jogador`),
+  CONSTRAINT `FK5CD4364C131CA229` FOREIGN KEY (`id_desafiado`) REFERENCES `tb_jogador` (`id_jogador`),
+  CONSTRAINT `FK5CD4364C16E419ED` FOREIGN KEY (`id_categoria`) REFERENCES `tb_categoria` (`id_categoria`),
+  CONSTRAINT `FK5CD4364CCB30087D` FOREIGN KEY (`id_vencedor`) REFERENCES `tb_jogador` (`id_jogador`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_item_desafio`
+--
+
+DROP TABLE IF EXISTS `tb_item_desafio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_item_desafio` (
+  `id_item_desafio` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `tipo_pergunta` int(11) DEFAULT NULL,
+  `id_desafio` bigint(20) NOT NULL,
+  `id_musica` bigint(20) DEFAULT NULL,
+  `resposta_correta` bigint(20) DEFAULT NULL,
+  `resposta_desafiado` bigint(20) DEFAULT NULL,
+  `resposta_desafiante` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_item_desafio`),
+  KEY `FKBBE7EC222CCADB91` (`id_musica`),
+  KEY `FKBBE7EC2233AA4BE6` (`resposta_desafiante`),
+  KEY `FKBBE7EC22BCAE575E` (`resposta_correta`),
+  KEY `FKBBE7EC227DBE2B81` (`id_desafio`),
+  KEY `FKBBE7EC221BF59E54` (`resposta_desafiado`),
+  CONSTRAINT `FKBBE7EC221BF59E54` FOREIGN KEY (`resposta_desafiado`) REFERENCES `tb_resposta_jogador` (`id_resposta_jogador`),
+  CONSTRAINT `FKBBE7EC222CCADB91` FOREIGN KEY (`id_musica`) REFERENCES `tb_musica` (`id_musica`),
+  CONSTRAINT `FKBBE7EC2233AA4BE6` FOREIGN KEY (`resposta_desafiante`) REFERENCES `tb_resposta_jogador` (`id_resposta_jogador`),
+  CONSTRAINT `FKBBE7EC227DBE2B81` FOREIGN KEY (`id_desafio`) REFERENCES `tb_desafio` (`id_desafio`),
+  CONSTRAINT `FKBBE7EC22BCAE575E` FOREIGN KEY (`resposta_correta`) REFERENCES `tb_resposta` (`id_resposta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_item_desafio_opcao`
+--
+
+DROP TABLE IF EXISTS `tb_item_desafio_opcao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_item_desafio_opcao` (
+  `id_item_desafio` bigint(20) NOT NULL,
+  `id_opcao` bigint(20) NOT NULL,
+  PRIMARY KEY (`id_item_desafio`,`id_opcao`),
+  UNIQUE KEY `id_opcao` (`id_opcao`),
+  KEY `FKE047C7F36D1DC60A` (`id_item_desafio`),
+  KEY `FKE047C7F3964A67A7` (`id_opcao`),
+  CONSTRAINT `FKE047C7F3964A67A7` FOREIGN KEY (`id_opcao`) REFERENCES `tb_opcao` (`id_opcao`),
+  CONSTRAINT `FKE047C7F36D1DC60A` FOREIGN KEY (`id_item_desafio`) REFERENCES `tb_item_desafio` (`id_item_desafio`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_jogador`
+--
+
+DROP TABLE IF EXISTS `tb_jogador`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_jogador` (
+  `id_jogador` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `dt_nascimento` date NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `nome` varchar(35) NOT NULL,
+  `sexo` int(11) DEFAULT NULL,
+  `id_user` bigint(20) NOT NULL,
+  PRIMARY KEY (`id_jogador`),
+  KEY `FKAAA0EF374DEA7AF` (`id_user`),
+  CONSTRAINT `FKAAA0EF374DEA7AF` FOREIGN KEY (`id_user`) REFERENCES `tb_usuario` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_jogador_desafio`
+--
+
+DROP TABLE IF EXISTS `tb_jogador_desafio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_jogador_desafio` (
+  `id_jogador` bigint(20) NOT NULL,
+  `id_desafio` bigint(20) NOT NULL,
+  UNIQUE KEY `id_desafio` (`id_desafio`),
+  KEY `FKB2503E1519579D57` (`id_jogador`),
+  KEY `FKB2503E157DBE2B81` (`id_desafio`),
+  CONSTRAINT `FKB2503E157DBE2B81` FOREIGN KEY (`id_desafio`) REFERENCES `tb_desafio` (`id_desafio`),
+  CONSTRAINT `FKB2503E1519579D57` FOREIGN KEY (`id_jogador`) REFERENCES `tb_jogador` (`id_jogador`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_jogador_level`
+--
+
+DROP TABLE IF EXISTS `tb_jogador_level`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_jogador_level` (
+  `id_jogador_level` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `moeda` int(11) NOT NULL,
+  `jogador_id_jogador` bigint(20) DEFAULT NULL,
+  `id_level` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_jogador_level`),
+  KEY `FK29A6687C95EC6A0F` (`id_level`),
+  KEY `FK29A6687C98A695EE` (`jogador_id_jogador`),
+  CONSTRAINT `FK29A6687C98A695EE` FOREIGN KEY (`jogador_id_jogador`) REFERENCES `tb_jogador` (`id_jogador`),
+  CONSTRAINT `FK29A6687C95EC6A0F` FOREIGN KEY (`id_level`) REFERENCES `tb_level` (`id_level`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_level`
+--
+
+DROP TABLE IF EXISTS `tb_level`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_level` (
+  `id_level` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `codigo_level` int(11) NOT NULL,
+  `nome_level` varchar(20) NOT NULL,
+  `pontos_maximo` int(11) NOT NULL,
+  `pontos_minimo` int(11) NOT NULL,
+  PRIMARY KEY (`id_level`)
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_musica`
+--
+
+DROP TABLE IF EXISTS `tb_musica`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_musica` (
+  `id_musica` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `nome` varchar(35) NOT NULL,
+  `primera_parte` varchar(50) NOT NULL,
+  `segunda_parte` varchar(50) NOT NULL,
+  `id_artista` bigint(20) NOT NULL,
+  PRIMARY KEY (`id_musica`),
+  KEY `FK554C4DCD6CDAA13B` (`id_artista`),
+  CONSTRAINT `FK554C4DCD6CDAA13B` FOREIGN KEY (`id_artista`) REFERENCES `tb_artista` (`id_artista`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_musica_categoria`
+--
+
+DROP TABLE IF EXISTS `tb_musica_categoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_musica_categoria` (
+  `id_categoria` bigint(20) NOT NULL,
+  `id_musica` bigint(20) NOT NULL,
+  PRIMARY KEY (`id_categoria`,`id_musica`),
+  KEY `FK2FC90D412CCADB91` (`id_musica`),
+  KEY `FK2FC90D4116E419ED` (`id_categoria`),
+  CONSTRAINT `FK2FC90D4116E419ED` FOREIGN KEY (`id_categoria`) REFERENCES `tb_categoria` (`id_categoria`),
+  CONSTRAINT `FK2FC90D412CCADB91` FOREIGN KEY (`id_musica`) REFERENCES `tb_musica` (`id_musica`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_opcao`
+--
+
+DROP TABLE IF EXISTS `tb_opcao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_opcao` (
+  `id_opcao` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `tipo_pergunta` int(11) DEFAULT NULL,
+  `id_artista` bigint(20) DEFAULT NULL,
+  `id_musica` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_opcao`),
+  KEY `FKFA98013F2CCADB91` (`id_musica`),
+  KEY `FKFA98013F6CDAA13B` (`id_artista`),
+  CONSTRAINT `FKFA98013F6CDAA13B` FOREIGN KEY (`id_artista`) REFERENCES `tb_artista` (`id_artista`),
+  CONSTRAINT `FKFA98013F2CCADB91` FOREIGN KEY (`id_musica`) REFERENCES `tb_musica` (`id_musica`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_resposta`
+--
+
+DROP TABLE IF EXISTS `tb_resposta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_resposta` (
+  `id_resposta` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `tipo_pergunta` int(11) DEFAULT NULL,
+  `id_artista` bigint(20) DEFAULT NULL,
+  `id_musica` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_resposta`),
+  KEY `FKECDAA5D22CCADB91` (`id_musica`),
+  KEY `FKECDAA5D26CDAA13B` (`id_artista`),
+  CONSTRAINT `FKECDAA5D26CDAA13B` FOREIGN KEY (`id_artista`) REFERENCES `tb_artista` (`id_artista`),
+  CONSTRAINT `FKECDAA5D22CCADB91` FOREIGN KEY (`id_musica`) REFERENCES `tb_musica` (`id_musica`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_resposta_jogador`
+--
+
+DROP TABLE IF EXISTS `tb_resposta_jogador`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_resposta_jogador` (
+  `id_resposta_jogador` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `dt_resposta` datetime DEFAULT NULL,
+  `pontos_ganhos` int(11) NOT NULL,
+  `id_jogador` bigint(20) DEFAULT NULL,
+  `id_respota` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id_resposta_jogador`),
+  KEY `FK65AFE29B19579D57` (`id_jogador`),
+  KEY `FK65AFE29B1390FA3E` (`id_respota`),
+  CONSTRAINT `FK65AFE29B1390FA3E` FOREIGN KEY (`id_respota`) REFERENCES `tb_resposta` (`id_resposta`),
+  CONSTRAINT `FK65AFE29B19579D57` FOREIGN KEY (`id_jogador`) REFERENCES `tb_jogador` (`id_jogador`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tb_usuario`
+--
+
+DROP TABLE IF EXISTS `tb_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_usuario` (
+  `id_usuario` bigint(20) NOT NULL AUTO_INCREMENT,
+  `status` int(11) DEFAULT NULL,
+  `data_insercao` datetime DEFAULT NULL,
+  `login` varchar(255) DEFAULT NULL,
+  `senha` varchar(255) DEFAULT NULL,
+  `data_atualizacao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_artista`
+--
+
+/*!40000 ALTER TABLE `tb_artista` DISABLE KEYS */;
+INSERT INTO `tb_artista` (`id_artista`,`status`,`nome`) VALUES 
+ (100,1,'Pink Floyd'),
+ (101,1,'Queen'),
+ (102,1,'The Beatles'),
+ (103,1,'CPM 22'),
+ (104,1,'Legião Urbana'),
+ (105,1,'Ultraje a Rigor'),
+ (106,1,'Michael Jackson'),
+ (107,1,'Madonna'),
+ (108,1,'Shakira'),
+ (109,1,'Zezé Di Camargo e Luciano'),
+ (110,1,'Leandro e Leonardo'),
+ (111,1,'Sergio Reis');
+/*!40000 ALTER TABLE `tb_artista` ENABLE KEYS */;
+
+--
+-- Dumping data for table `tb_categoria`
+--
+
+/*!40000 ALTER TABLE `tb_categoria` DISABLE KEYS */;
+INSERT INTO `tb_categoria` (`id_categoria`,`status`,`nome`,`pais`,`quantidade_moeda`) VALUES 
+ (100,1,'Classic Rock',2,5),
+ (101,1,'Rock Brasileiro',1,5),
+ (102,1,'POP',2,5),
+ (103,1,'Sertanejo',1,5);
+/*!40000 ALTER TABLE `tb_categoria` ENABLE KEYS */;
+
+--
+-- Dumping data for table `tb_musica`
+--
+
+/*!40000 ALTER TABLE `tb_musica` DISABLE KEYS */;
+INSERT INTO `tb_musica` (`id_musica`,`status`,`nome`,`primera_parte`,`segunda_parte`,`id_artista`) VALUES 
+ (100,1,'Money','Money, get away. Get a good job with more pay and','you\'re okay. Money, it\'s a gas. Grab that cash',100),
+ (101,1,'Another brinck the wall','Daddy\'s flown across the ocean Leaving just a','memory Snapshot in the family album',100),
+ (102,1,'Comfortably Numb','Hello, Is there anybody in there? Is there anyone','at home? Come on now I hear you\'re feeling down ',100),
+ (103,1,'Goodbye Blue Sky','Look mommy, there\'s an aeroplane up in the sky','Did you see the frightened ones?',100),
+ (104,1,'Echoes','Overhead the albatross hangs motionless upon the','air And deep beneath the rolling waves',100),
+ (105,1,'Chapter 24','A movement is accomplished in six stages ','And the seventh brings return.',100),
+ (106,1,'Radio GAGA','I\'d sit alone And watch your light','My only friend Through teenage nights',101),
+ (107,1,'Bohemian Rhapsody','Is this the real life? Is this just fantasy?','Caught in a landslide No escape from reality',101),
+ (108,1,'We Will Rock You','Buddy you\'re a boy make a big noise','Playin\' in the street gonna be a big man some day',101),
+ (109,1,'We Are the Champions','I\'ve paid my dues Time after time','I\'ve done my sentence But committed no crime',101),
+ (110,1,'Love Of My Life','Love of my life, you\'ve hurt me','You\'ve broken my heart and now you leave me',101),
+ (111,1,'Hey Jude','Hey, Jude, don\'t make it bad,','Take a sad song and make it better',102),
+ (112,1,'Eleanor Rigby','Ah, look at all the lonely people!','Ah, look at all the lonely people!',102),
+ (113,1,'All You Need is Love','Love, love, love Love, love, love Love, love, love','There\'s nothing you can do that can\'t be done',102),
+ (114,1,'Yellow Submarine','In the town where I was born','Lived a man who sailed to sea',102),
+ (115,1,'Help','Help! I need somebody Help! Not just anybody','Help! You know I need someone Help!',102),
+ (116,1,'Um Minuto para o Fim do Mundo','Me sinto só, Mas quem é que nunca se sentiu assim','Procurando um caminho pra seguir,',103),
+ (117,1,'Tarde de Outubro','Peguei minhas coisas fui embora ','Não queria mais voltar',103),
+ (118,1,'Além de Nós','Eu sei...quem deu o primeiro passo foi você','Agora é questão de tempo',103),
+ (119,1,'Nossa Música','Lembro que disse:','\"É hora de seguirmos sozinhos\"',103),
+ (120,1,'Cpm 22','Então, escute esse som Que não fala de amor','Mas, com certeza O sentimento é real',103),
+ (121,1,'Eduardo e Mônica','Quem um dia irá dizer que existe razão','Nas coisas feitas pelo coração?',104),
+ (122,1,'Que pais é esse','Nas favelas, no senado Sujeira pra todo lado','Ninguém respeita a constituição',104),
+ (123,1,'Faroeste caboclo','Não tinha medo o tal João de Santo Cristo','Era o que todos diziam quando ele se perdeu',104),
+ (124,1,'Geração coca-cola','Quando nascemos fomos programados','A receber o que vocês nos empurraram',104),
+ (125,1,'A Via Láctea','Quando tudo está perdido Sempre existe um caminho','Quando tudo está perdido Sempre existe uma luz',104),
+ (126,1,'Agora é Tarde','O risco de eu me machucar era pequeno ','e mesmo assim Não consegui me convencer',105),
+ (127,1,'Nós vamos invadir sua praia','Daqui do morro dá pra ver tão legal','O que acontece aí no seu litoral',105),
+ (128,1,'Prisioneiro','Nunca soube o que era constituição','Cresci sem mãe, sem pai e sem patrão',105),
+ (129,1,'O Fusquinha do Itamar','Essa é uma das muitas histórias que acontecem','comigo primeiro, foi o fusca do Juscelino',105),
+ (130,1,'Nada a Declarar','Eu tô sentindo que a galera anda entediada','Não tão ouvindo nada e não tão dando risada',105),
+ (131,1,'Thriller','It\'s close to midnight','something evil\'s lurkin\' in the dark',106),
+ (132,1,'Billie Jean','She was more like a beauty queen from a movie ','scene I said don\'t mind, but what do you mean',106),
+ (133,1,'We are the world','Girl, close your eyes','Let that rhythm get into you',106),
+ (134,1,'Black Or White','I took my baby on a Saturday bang','Boy is that girl with you',106),
+ (135,1,'Human Nature','Looking out Across the night time','The city winks a sleepless eye',106),
+ (136,1,'Celebration','I think you wanna\' come over,','Yeah I heard it through',107),
+ (137,1,'Don\'t cry for me Argentina','It won\'t be easy, you\'ll think it strange','When I try to explain how I feel,',107),
+ (138,1,'Don\'t tell me','Don\'t tell me to stop','Tell the rain not to drop',107),
+ (139,1,'Crazy for you','Swaying room as the music starts','Strangers making the most of the dark',107),
+ (140,1,'Ray Of Light','Zephyr in the sky at night - I wonder','Do my tears of mourning',107),
+ (141,1,'Estoy Aqui','Ya sé que no vendrás Todo lo que fue','El tiempo lo dejó atrás',108),
+ (142,1,'Whenever, Wherever','Lucky you were born that far away so','So we could both make fun of distance',108),
+ (143,1,'Que Me Quedes Tu','Que se arruinen los canales de noticias','Con lo mucho que odio la televisión',108),
+ (144,1,'Waka Waka','You\'re a good soldier Choosing your battles','Pick yourself up And dust yourself off',108),
+ (145,1,'Inevitable','Si es cuestión de confesar no sé preparar café','y no entiendo de fútbol.',108),
+ (146,1,'Comendo em sua mão','Tô apaixonado por você,','nem sei como foi acontecer',109),
+ (147,1,'Do outro lado da cidade','Hoje vou voltar de madrugada','Sei que ela vai brigar comigo',109),
+ (148,1,'Derrama esse amor em mim','Você vive grudada feito tatuagem cara',' nesse cara Ele não te ama não te merece',109),
+ (149,1,'Meu país','Aqui não falta sol','Aqui não falta chuva',109),
+ (150,1,'Menina Veneno','Meia noite no meu quarto, ela vai subir','Eu ouço passos na escada, vejo a porta abrir',109),
+ (151,1,'Não Aprendi a Dizer Adeus','Não aprendi a dizer adeus','Não sei se vou me acostumar',110),
+ (152,1,'Um Sonhador','Eu não sei pra onde vou','Pode até não dar em nada',110),
+ (153,1,'Entre tapas e beijos','Perguntaram pra mim','Se ainda gosto dela',110),
+ (154,1,'Pra Nunca Dizer Adeus','Para mim o teu sorriso é como as estrelas','Para mim o teu olhar é a luz da lua',110),
+ (155,1,'Eu Juro','Eu vejo a luz do seu olhar','Como uma noite de luar',110),
+ (156,1,'O Menino da Porteira','Toda vez que eu viajava pela Estrada de Ouro Fino','de longe eu avistava a figura de um menino',111),
+ (157,1,'Destino de Carreteiro','Aceno pra gente amiga, dou adeus e vou embora','Ponho óculos escuros, vou cortando estradão',111),
+ (158,1,'Carga Pesada','Me chamo carga pesada','Rasgando estrada',111),
+ (159,1,'Cavalo Preto','Eu tenho um cavalo preto','Por nome de ventania',111),
+ (160,1,'Casinha Branca','Fiz uma casinha branca','Lá no pé da serra',111);
+/*!40000 ALTER TABLE `tb_musica` ENABLE KEYS */;
+
+/*!40000 ALTER TABLE `tb_musica_categoria` DISABLE KEYS */;
+INSERT INTO `tb_musica_categoria` (`id_categoria`,`id_musica`) VALUES 
+ (100,100),
+ (100,101),
+ (100,102),
+ (100,103),
+ (100,104),
+ (100,105),
+ (100,106),
+ (100,107),
+ (100,108),
+ (100,109),
+ (100,110),
+ (100,111),
+ (100,112),
+ (100,113),
+ (100,114),
+ (100,115),
+ (101,116),
+ (101,117),
+ (101,118),
+ (101,119),
+ (101,120),
+ (101,121),
+ (101,122),
+ (101,123),
+ (101,124),
+ (101,125),
+ (101,126),
+ (101,127),
+ (101,128),
+ (101,129),
+ (101,130),
+ (102,131),
+ (102,132),
+ (102,133),
+ (102,134),
+ (102,135),
+ (102,136),
+ (102,137),
+ (102,138),
+ (102,139),
+ (102,140),
+ (102,141),
+ (102,142),
+ (102,143),
+ (102,144),
+ (102,145),
+ (103,146),
+ (103,147),
+ (103,148),
+ (103,149),
+ (103,150),
+ (103,151),
+ (103,152),
+ (103,153),
+ (103,154),
+ (103,155),
+ (103,156),
+ (103,157),
+ (103,158),
+ (103,159),
+ (103,160);
+/*!40000 ALTER TABLE `tb_musica_categoria` ENABLE KEYS */;
+
+INSERT INTO `mackenzie`.`tb_level` (`id_level`, `status`, `codigo_level`, `nome_level`, `pontos_maximo`, `pontos_minimo`) VALUES ('100', '1', '1', 'Level Zero', '99', '0');
+INSERT INTO `mackenzie`.`tb_level` (`id_level`, `status`, `codigo_level`, `nome_level`, `pontos_maximo`, `pontos_minimo`) VALUES ('101', '1', '2', 'Level Primeiro', '199', '100');
+INSERT INTO `mackenzie`.`tb_level` (`id_level`, `status`, `codigo_level`, `nome_level`, `pontos_maximo`, `pontos_minimo`) VALUES ('102', '1', '3', 'Level Segundo', '299', '200');
+INSERT INTO `mackenzie`.`tb_level` (`id_level`, `status`, `codigo_level`, `nome_level`, `pontos_maximo`, `pontos_minimo`) VALUES ('103', '1', '4', 'Level Terceiro', '399', '300');
+INSERT INTO `mackenzie`.`tb_level` (`id_level`, `status`, `codigo_level`, `nome_level`, `pontos_maximo`, `pontos_minimo`) VALUES ('104', '1', '5', 'Level Quarto', '100000', '400');
+
+
+
+--
+-- Dumping events for database 'mackenzie'
+--
+
+--
+-- Dumping routines for database 'mackenzie'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2012-12-03  5:05:47
