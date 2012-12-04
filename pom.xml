@@ -363,6 +363,7 @@
 						<outputfilename>schema.ddl</outputfilename>
 						<drop>false</drop>
 						<create>true</create>
+						<update>true</update>
 						<export>false</export>
 						<format>true</format>
 
