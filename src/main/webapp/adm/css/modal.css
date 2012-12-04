@@ -1,0 +1,26 @@
+/* MODAL */
+.load {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 88px;
+	height: 78px;
+	margin: -39px 0 0 -44px;
+	z-index: 99999
+}
+
+.bg_modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #000;
+	z-index: 99998
+}
+
+.view_modal {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	text-align: left;
+	z-index: 99998
+}
